@@ -59,9 +59,9 @@ app.use((error, req, res, next) => {
 
 //Connect to Mongo Atlas Cloud DB
 mongoose.connect(
-  "mongodb+srv://fife:" +
+  "mongodb+srv://:" +
     password +
-    "@cluster0-th6lt.mongodb.net/test?retryWrites=true&w=majority",
+    "@cluster0-th6lt.mongodb.net/?retryWrites=true&w=majority",
   { useNewUrlParser: true }
 );
 
