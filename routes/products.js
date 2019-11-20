@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
-const Product = require("../model/products");
+const Product = require("../models/products");
 
 // Get all existing products
 router.get("/", (req, res, next) => {

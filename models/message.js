@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-messagingSchema = mongoose.Schema({
+messageSchema = mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
   segId: { type: String, required: true },
   options: [
@@ -15,4 +15,4 @@ messagingSchema = mongoose.Schema({
   ]
 });
 
-module.exports = mongoose.model("Messaging", messagingSchema);
+module.exports = mongoose.model("Message", messageSchema);

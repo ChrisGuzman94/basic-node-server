@@ -1,12 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
-const Messaging = require("../model/messaging");
+const Message = require("../models/message");
 const excel = require("excel4node");
-const fs = require("fs");
 // Get all existing products
 router.get("/", (req, res, next) => {
-  Messaging.find()
+  Message.find()
     .then(doc => {
       if (doc) {
         res.status(200).json(doc);
@@ -135,7 +134,7 @@ router.post("/create", (req, res, next) => {
   workbook.write("Excel.xlsx", res);
 });
 router.get("/:id", (req, res, next) => {
-  Messaging.findById(req.body.id)
+  Message.findById(req.params.id)
     .then(doc => {
       if (doc) {
         res.status(200).json({
@@ -149,10 +148,10 @@ router.get("/:id", (req, res, next) => {
 });
 
 router.post("/", (req, res, next) => {
-  const messaging = new Messaging({
+  const messaging = new Message({
     _id: new mongoose.Types.ObjectId(),
     segId: req.body.segId,
-    position: req.body.position.map(position => position)
+    options: req.body.options.map(option => option)
   });
 
   messaging

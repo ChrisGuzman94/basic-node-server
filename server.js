@@ -1,12 +1,11 @@
 const express = require("express");
+const app = express();
 const compression = require("compression");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
 const productRoutes = require("./routes/products");
-const messagingRoutes = require("./routes/messaging");
-const password = process.env.DB_PASSWORD;
-
-const app = express();
+const messageRoutes = require("./routes/message");
+const fileRoutes = require("./routes/files");
 
 //Log all request
 app.use(morgan("dev"));
@@ -38,7 +37,9 @@ app.use((req, res, next) => {
 
 //Routes that handle all incoming requests
 app.use("/products", productRoutes);
-app.use("/messaging", messagingRoutes);
+app.use("/message", messageRoutes);
+app.use("/upload", fileRoutes);
+app.use("/uploads", express.static("uploads"));
 
 /////////////////////////////////////////
 
@@ -57,13 +58,10 @@ app.use((error, req, res, next) => {
 });
 ////////////////////////////////////////////
 
-//Connect to Mongo Atlas Cloud DB
-mongoose.connect(
-  "mongodb+srv://:" +
-    password +
-    "@cluster0-th6lt.mongodb.net/?retryWrites=true&w=majority",
-  { useNewUrlParser: true }
-);
+//Connect to Mongo DB
+mongoose.connect("mongodb://localhost:27017/Mapping", {
+  useNewUrlParser: true
+});
 
 mongoose.Promise = global.Promise;
 /////////////////////////////////////////////
