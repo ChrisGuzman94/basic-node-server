@@ -59,7 +59,7 @@ app.use((error, req, res, next) => {
 ////////////////////////////////////////////
 
 //Connect to Mongo DB
-mongoose.connect("mongodb://localhost:27017/Mapping", {
+mongoose.connect("MongoDB Url", {
   useNewUrlParser: true
 });
 
