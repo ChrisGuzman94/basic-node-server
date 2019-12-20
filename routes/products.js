@@ -6,6 +6,7 @@ const Product = require("../models/products");
 // Get all existing products
 router.get("/", (req, res, next) => {
   Product.find()
+  // Select only the followin fields
     .select("name price _id")
     .then(docs => {
       const response = {
