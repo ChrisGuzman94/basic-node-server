@@ -10,7 +10,7 @@
     "file-saver": "^2.0.2",
     "fs": "0.0.1-security",
     "ftp-client": "^0.2.2",
-    "mongoose": "^5.6.9",
+    "mongoose": "^5.7.5",
     "morgan": "^1.9.1",
     "multer": "^1.4.2",
     "nodemon": "^1.19.1",
